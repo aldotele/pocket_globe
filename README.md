@@ -9,3 +9,8 @@ user's selections.
 
 ### how to launch
 `node index.js`
+
+
+*otuput preview*
+
+![capital output sample](media/preview.JPG)
