@@ -4,10 +4,10 @@ const { gql } = require('apollo-boost');  // destructuring
 
 
 module.exports = gql`
-    query getCountryCapital($name: String!) {
+    query getFlagByCountry($name: String!) {
         country(where: {name: $name}) {
-            capital {
-                name
+            flag {
+                url
             }
         }
     }
