@@ -49,11 +49,11 @@ async function main() {
         {
             type: 'list',
             name: 'section',
-            message: 'Select one',
+            message: 'Select section',
             choices: [
                 'capital',
                 'flag',
-                //'curiosity'
+                'curiosity',
             ]
         }
     ])
@@ -75,6 +75,22 @@ async function main() {
             })
             flag = flag_url.country.flag.url
             console.log(flag)
+        } catch (TypeError) {
+            console.log("coming soon ...")
+        }
+    } else if (section === "curiosity") {
+        try {
+            const { data: curiosity_data } = await graphql.query({
+                query: require(`./src/graphql/queries/getCuriosityByCountry`),
+                variables: {name: country.toLowerCase()}
+            })
+            curiosity = curiosity_data.country.curiosity
+            if (curiosity.length > 0) {
+                let pick = curiosity[Math.floor(Math.random()*curiosity.length)]
+                console.log(pick)
+            } else {
+                console.log("coming soon ...")
+            }
         } catch (TypeError) {
             console.log("coming soon ...")
         }
